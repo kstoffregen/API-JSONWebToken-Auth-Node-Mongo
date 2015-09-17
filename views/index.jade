@@ -8,11 +8,19 @@ block content
             .container
                 p Click the "Test" button to send an Ajax request to /api/test. If you are authenticated, the data will be displayed
                 .btn-group
+                    button#networking.btn.btn-primary(type="button") Events
                     button#test.btn.btn-primary(type="button") Test
                     button#logout.btn.btn-primary(type="button") Logout
 
     .well
         p#user
+
+        #eventContainer
+            h1 Your Events:
+
+            ul#eventList
+
+
         form.form-horizontal#login(role='form' method='post')
             legend
                 h1 Login
@@ -26,8 +34,39 @@ block content
                         input.form-control(type='password' id="password" name="password" placeholder='Password')
                 .form-group
                     button.btn.btn-primary(type='submit') Submit
-
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    input(type='checkbox' id="remember" name="remember" value="remember")
+                    | &nbsp;
+                    | Remember Me
+                .form-group
                     a(href='/register')
                       button.btn.btn-default(type="button") Register
+
+                p#error.error
+
+        form.form-horizontal#eventForm(role='form')
+            legend
+                h1 Add Event
+                .form-group
+                    label.control-label.col-sm-2(for="title") Title:
+                    .col-sm-10
+                        input.form-control(type='text' id="title" name="title" placeholder='Enter Title')
+                .form-group
+                    label.control-label.col-sm-2(for="description") Description:
+                    .col-sm-10
+                        input.form-control(type='text' id="description" name="description" placeholder='Enter Description')
+                .form-group
+                    label.control-label.col-sm-2(for="location") Location:
+                    .col-sm-10
+                        input.form-control(type='text' id="location" name="location" placeholder='Enter Location')
+                .form-group
+                    label.control-label.col-sm-2(for="date") Date:
+                    .col-sm-4
+                        input.form-control(type='date' id="date" name="date")
+                    label.control-label.col-sm-2(for="time") Time:
+                    .col-sm-4
+                        input.form-control(type='time' id="time" name="time")
+                .form-group
+                        button.btn.btn-danger(type="button" id="addEvent") Add Event
 
                 p#error.error
